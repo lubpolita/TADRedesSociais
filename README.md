@@ -1,2 +1,2 @@
 # TADRedesSociais
-Implementação do TAD dere
+Implementação do TAD de redes sociais
