@@ -27,7 +27,7 @@ void Imprimir(TUsuarios user){
     printf("\n%s", user.senha);
 
     printf("Data de Nascimento: ");
-    printf("\n%s / %s / %s ", user.data_de_nascimento.dia, user.data_de_nascimento.mes, user.data_de_nascimento.ano);
+    printf("\n%d / %d / %d ", user.data_de_nascimento.dia, user.data_de_nascimento.mes, user.data_de_nascimento.ano);
 
 }
 
@@ -104,9 +104,9 @@ void Imprimir2 (TRedeSocial rede){
     printf("\n\n\n\n\n------------USUARIOS----------\n");
     
     for (i = 0; i < rede.indice; i++){
-        printf("\n----------Usuario %d: -----------------\n", i+1);
         //caso o usuario nao tenha sido excluido
         if(rede.vetor[i].ID != -1){
+            printf("\n----------Usuario %d: -----------------\n", i+1);
             Imprimir(rede.vetor[i]);
         }
     }
@@ -123,18 +123,12 @@ int Pesquisar (TRedeSocial rede, TUsuarios user){
         if(strcmp(rede.vetor[i].nome, user.nome) == 0){
             return i;   //indice encontrado
         }
-        else{
-            return -1; // nao encontrado
-        }
     }
-
+    return -1;
 
 }
 
-//qual o nome que voce deseja alterar? 
-//antes i = pesquisar(rede, usuario);
-// agora leia o usuario Ler(&usuario);
-//passe os args
+
 void Alterar (TRedeSocial *rede, TUsuarios user, int indice){
     user.ID = indice;
     rede->vetor[indice] = user;
@@ -148,10 +142,10 @@ void Excluir (TRedeSocial *rede, int indice){
     rede->vetor[indice].ID = -1;  //-1 significa usuario inativo
 //zerar coluna do usuario 
     for (i = 0; i < rede->indice; i++){
-        for(j = 0; j < rede->indice; j++){
-            rede->matrix[indice][j] = 0; //excluindo amizades de colunas
+        if(rede->matrix[indice][i] == 1){
+            rede->matrix[indice][i] = 0;
+            rede->matrix[i][indice] = 0;
         }
-        rede->matrix[i][indice] = 0; //excluindo amizades de linhas
     }
 }
 

@@ -2,11 +2,14 @@
 #include <stdlib.h>
 #include "redesocial.h"
 #include "interface.h"
+#include <stdio_ext.h>
+#include "amizades.h"
 
 int main (){
 
     TRedeSocial rede;
     TUsuarios usuario;
+    Iniciar(&rede);
  
     int opcao = 0;
 

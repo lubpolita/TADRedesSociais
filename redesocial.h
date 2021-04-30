@@ -1,4 +1,5 @@
-#define REDESOCIAL_H_INCLUDED
+#ifndef REDE_SOCIAL_H
+#define REDE_SOCIAL_H
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -42,3 +43,4 @@ int Pesquisar(TRedeSocial rede, TUsuarios user);
 void Alterar(TRedeSocial *rede, TUsuarios user, int indice);
 void Excluir(TRedeSocial *rede, int indice);
 
+#endif
